@@ -1,0 +1,21 @@
+{
+  "name": "test-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard for in house testing ",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js",
+    "lint": "npm run prettier && npm run eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherylfowlie/test-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherylfowlie/test-dashboard/issues"
+  },
+  "homepage": "https://github.com/cherylfowlie/test-dashboard#readme"
+}
