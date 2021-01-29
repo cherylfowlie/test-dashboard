@@ -1,21 +1,19 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+// import api from "./utils/API"
+import { BrowserRouter as Router } from "react-router-dom";
+import Nav from "./components/Nav";
+import List from "./components/List"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+function App() {
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <List />
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
 export default App;
