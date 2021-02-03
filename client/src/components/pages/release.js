@@ -5,6 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 export function ListRelease() {
     return (
+
         <ListGroup variant="flush">
             <ListGroup.Item>Cras justo odio</ListGroup.Item>
             <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
