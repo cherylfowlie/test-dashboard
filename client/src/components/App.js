@@ -7,8 +7,12 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
-import ListStandUp from "./pages/standup"
-import ListRelease from "./pages/release"
+import ListRelease from "./pages/release";
+
+import CreateUser from "./main/create-user.component";
+import CreateStandup from "./main/create-standup.component";
+import EditStandup from "./main/edit-standup.component";
+
 
 function App() {
   return (
@@ -16,12 +20,17 @@ function App() {
       <AuthProvider>
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          {/* Signup Routing */}
+          <Route path="/update" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/standup" component={ListStandUp} />
           <Route path="/release" component={ListRelease} />
+          {/* Standup Routing */}
+          <Route path="/user" component={CreateUser} />
+          <Route path="/create" component={CreateStandup} />
+          <Route path="/edit/:id" component={EditStandup} />
+
         </Switch>
       </AuthProvider>
     </Router>
