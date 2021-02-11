@@ -1,32 +1,27 @@
-import React, { useState } from "react"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import { useHistory } from "react-router-dom"
-import { Navbar, Nav, Button, Alert } from "react-bootstrap"
-import ListStandUp from '../pages/standup';
-import ListRelease from '../pages/release';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Navbar, Nav, Button, Alert } from "react-bootstrap";
+import ListStandUp from "../pages/standup";
+import ListRelease from "../pages/release";
 
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth } from "../../contexts/AuthContext";
 
 function Navigation() {
-  const [error, setError] = useState("")
-  const { logout } = useAuth()
-  const history = useHistory()
+  const [error, setError] = useState("");
+  const { logout } = useAuth();
+  const history = useHistory();
 
   async function handleLogout() {
-    setError("")
+    setError("");
 
     try {
-      await logout()
-      history.push("/login")
+      await logout();
+      history.push("/login");
     } catch {
-      setError("Failed to log out")
+      setError("Failed to log out");
     }
   }
-
 
   return (
     <div>
@@ -34,24 +29,23 @@ function Navigation() {
         <div className="col-md-12">
           <Router>
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-              <Navbar.Brand href="#home">Test Dashoard</Navbar.Brand>
+              <Navbar.Brand href="#home">Test Dashboard</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/standup">Stan Up</Nav.Link>
+                  <Nav.Link href="/create">Create Stand up</Nav.Link>
+                  <Nav.Link href="/user">User</Nav.Link>
                   <Nav.Link href="/release">Releases</Nav.Link>
                   <Button variant="link" onClick={handleLogout}>
                     Log Out
-        </Button>
+                  </Button>
                   {error && <Alert variant="danger">{error}</Alert>}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <br />
-
             <Switch>
               <Route exact path="/">
-                <h1>Testing</h1>
               </Route>
               <Route path="/standup">
                 <ListStandUp />
@@ -64,8 +58,7 @@ function Navigation() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
 
 export default Navigation;

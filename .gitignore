@@ -31,6 +31,7 @@ node_modules
 
 # Environmental Variables
 .env
+.env.production
 
 # Build directory
 dist
@@ -38,4 +39,4 @@ dist
 # VS Code
 .vscode
 
-client/build
+./client/build
