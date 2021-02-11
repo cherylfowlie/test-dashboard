@@ -2,6 +2,7 @@ import React from "react";
 import Signup from "./Signup";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
@@ -24,11 +25,11 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/release" component={ListRelease} />
+          <PrivateRoute exact path="/release" component={ListRelease} />
           {/* Standup Routing */}
-          <Route path="/user" component={CreateUser} />
-          <Route path="/create" component={CreateStandup} />
-          <Route path="/edit/:id" component={EditStandup} />
+          <PrivateRoute exact path="/user" component={CreateUser} />
+          <PrivateRoute exact path="/create" component={CreateStandup} />
+          <PrivateRoute exact path="/edit/:id" component={EditStandup} />
         </Switch>
       </AuthProvider>
     </Router>
