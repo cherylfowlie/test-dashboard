@@ -73,7 +73,7 @@ export default class StandupList extends Component {
       <div>
         <Navigation />
         <table className="table justify-content-md-center">
-          <thead className="thead-light justify-content-md-center" >
+          <thead className="thead-light justify-content-md-center">
             <tr>
               <th>Username</th>
               <th>Description</th>
@@ -83,7 +83,7 @@ export default class StandupList extends Component {
           </thead>
           <tbody ClassName="standupBody">{this.standupList()}</tbody>
         </table>
-      </div >
+      </div>
     );
   }
 }

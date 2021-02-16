@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Navigation from "../Nav/index"
+import Navigation from "../Nav/index";
 
 export default class EditStandup extends Component {
   constructor(props) {

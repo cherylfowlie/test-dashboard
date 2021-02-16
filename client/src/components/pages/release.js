@@ -9,8 +9,6 @@ export default class release extends Component {
         {/* <Navigation /> */}
 
         <TestList />
-
-
       </div>
     );
   }
