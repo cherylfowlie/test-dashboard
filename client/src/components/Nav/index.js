@@ -29,13 +29,14 @@ function Navigation() {
         <div className="col-md-12">
           <Router>
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-              <Navbar.Brand href="#home">Test Dashboard</Navbar.Brand>
+              <Navbar.Brand href="#">Test Dashboard</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                   <Nav.Link href="/create">Create Stand up</Nav.Link>
                   <Nav.Link href="/user">User</Nav.Link>
-                  <Nav.Link href="/release">Releases</Nav.Link>
+                  <Nav.Link href="/release">Tests</Nav.Link>
+                  <Nav.Link href="/tests">Bug Tracker</Nav.Link>
                   <Button variant="link" onClick={handleLogout}>
                     Log Out
                   </Button>
@@ -45,8 +46,7 @@ function Navigation() {
             </Navbar>
             <br />
             <Switch>
-              <Route exact path="/">
-              </Route>
+              <Route exact path="/"></Route>
               <Route path="/standup">
                 <ListStandUp />
               </Route>

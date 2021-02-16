@@ -1,61 +1,66 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axios from "axios";
-import Navigation from "../Nav/index"
+import Navigation from "../Nav/index";
 export default class CreateUser extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {
-            username: ''
-        }
-    }
+    this.state = {
+      username: "",
+    };
+  }
 
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        })
-    }
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
+  onSubmit(e) {
+    e.preventDefault();
 
-        const user = {
-            username: this.state.username
-        }
+    const user = {
+      username: this.state.username,
+    };
 
-        console.log(user);
+    console.log(user);
 
-        axios.post('http://localhost:3000/users/add', user)
-            .then(res => console.log(res.data));
+    axios
+      .post("http://localhost:3000/users/add", user)
+      .then((res) => console.log(res.data));
 
-        this.setState({
-            username: ''
-        })
-    }
+    this.setState({
+      username: "",
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                <Navigation />
-                <h3>Create New User</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.username}
-                            onChange={this.onChangeUsername}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Create User" className="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Navigation />
+        <form className="table" onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Username: </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.username}
+              onChange={this.onChangeUsername}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="submit"
+              value="Create User"
+              className="btn btn-primary"
+            />
+          </div>
+        </form>
+      </div>
+    );
+  }
 }

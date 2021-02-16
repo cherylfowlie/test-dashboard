@@ -1,152 +1,164 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import DatePicker from 'react-datepicker';
+import React, { Component } from "react";
+import axios from "axios";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Navigation from "../Nav/index";
 
 export default class EditStandup extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangePlatform = this.onChangePlatform.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangePlatform = this.onChangePlatform.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {
-            username: '',
-            description: '',
-            platform: '',
-            date: new Date(),
-            users: []
+    this.state = {
+      username: "",
+      description: "",
+      platform: "",
+      date: new Date(),
+      users: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/standup/" + this.props.match.params.id)
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          description: response.data.description,
+          platform: response.data.platform,
+          date: new Date(response.data.date),
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
+      .get("http://localhost:3000/users/")
+      .then((response) => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data.map((user) => user.username),
+          });
         }
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-    componentDidMount() {
-        axios.get('http://localhost:3000/standup/' + this.props.match.params.id)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    description: response.data.description,
-                    platform: response.data.platform,
-                    date: new Date(response.data.date)
-                })
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
 
-        axios.get('http://localhost:3000/users/')
-            .then(response => {
-                if (response.data.length > 0) {
-                    this.setState({
-                        users: response.data.map(user => user.username),
-                    })
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+  onChangeDescription(e) {
+    this.setState({
+      description: e.target.value,
+    });
+  }
 
-    }
+  onChangePlatform(e) {
+    this.setState({
+      platform: e.target.value,
+    });
+  }
 
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        })
-    }
+  onChangeDate(date) {
+    this.setState({
+      date: date,
+    });
+  }
 
-    onChangeDescription(e) {
-        this.setState({
-            description: e.target.value
-        })
-    }
+  onSubmit(e) {
+    e.preventDefault();
 
-    onChangePlatform(e) {
-        this.setState({
-            platform: e.target.value
-        })
-    }
+    const exercise = {
+      username: this.state.username,
+      description: this.state.description,
+      platform: this.state.platform,
+      date: this.state.date,
+    };
 
-    onChangeDate(date) {
-        this.setState({
-            date: date
-        })
-    }
+    console.log(exercise);
 
-    onSubmit(e) {
-        e.preventDefault();
+    axios
+      .post(
+        "http://localhost:3000/standup/update/" + this.props.match.params.id,
+        exercise
+      )
+      .then((res) => console.log(res.data));
 
-        const exercise = {
-            username: this.state.username,
-            description: this.state.description,
-            platform: this.state.platform,
-            date: this.state.date
-        }
+    window.location = "/";
+  }
 
-        console.log(exercise);
-
-        axios.post('http://localhost:3000/standup/update/' + this.props.match.params.id, exercise)
-            .then(res => console.log(res.data));
-
-        window.location = '/';
-    }
-
-    render() {
-        return (
+  render() {
+    return (
+      <div>
+        <Navigation />
+        <form className="table" onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Username: </label>
+            <select
+              ref="userInput"
+              required
+              className="form-control"
+              value={this.state.username}
+              onChange={this.onChangeUsername}
+            >
+              {this.state.users.map(function (user) {
+                return (
+                  <option key={user} value={user}>
+                    {user}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Description: </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.description}
+              onChange={this.onChangeDescription}
+            />
+          </div>
+          <div className="form-group">
+            <label>platform (in minutes): </label>
+            <input
+              type="text"
+              className="form-control"
+              value={this.state.platform}
+              onChange={this.onChangePlatform}
+            />
+          </div>
+          <div className="form-group">
+            <label>Date: </label>
             <div>
-                <h3>Edit Exercise Log</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <select ref="userInput"
-                            required
-                            className="form-control"
-                            value={this.state.username}
-                            onChange={this.onChangeUsername}>
-                            {
-                                this.state.users.map(function (user) {
-                                    return <option
-                                        key={user}
-                                        value={user}>{user}
-                                    </option>;
-                                })
-                            }
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Description: </label>
-                        <input type="text"
-                            required
-                            className="form-control"
-                            value={this.state.description}
-                            onChange={this.onChangeDescription}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>platform (in minutes): </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.platform}
-                            onChange={this.onChangePlatform}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Date: </label>
-                        <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
-                    </div>
-                </form>
+              <DatePicker
+                selected={this.state.date}
+                onChange={this.onChangeDate}
+              />
             </div>
-        )
-    }
+          </div>
+
+          <div className="form-group">
+            <input
+              type="submit"
+              value="Edit Daily Standup"
+              className="btn btn-primary"
+            />
+          </div>
+        </form>
+      </div>
+    );
+  }
 }

@@ -1,14 +1,15 @@
-import React from "react";
-import JiraList from "../List/jira-list";
+import React, { Component } from "react";
+import TestList from "../List/test-list";
+// import Navigation from "../Nav/index"
 
-// This file exports both the List and ListItem components
+export default class release extends Component {
+  render() {
+    return (
+      <div>
+        {/* <Navigation /> */}
 
-export function ListRelease() {
-  return (
-    <>
-      <JiraList />
-    </>
-  );
+        <TestList />
+      </div>
+    );
+  }
 }
-
-export default ListRelease;

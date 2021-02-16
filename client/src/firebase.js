@@ -1,15 +1,15 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-require('dotenv').config()
+require("dotenv").config();
 
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyDilS6PzUoo224poCIgv05OOKYIshQq1AI",
+  authDomain: "test-dashboard-a4764.firebaseapp.com",
+  projectId: "test-dashboard-a4764",
+  storageBucket: "test-dashboard-a4764.appspot.com",
+  messagingSenderId: "493879712195",
+  appId: "1:493879712195:web:152e9d3df4e962fff10576",
+  measurementId: "G-FXD6160NRP",
 });
 
 export const auth = app.auth();
