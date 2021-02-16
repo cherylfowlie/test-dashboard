@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Navigation from "../Nav/index"
 
 export default class EditStandup extends Component {
   constructor(props) {
@@ -100,8 +101,8 @@ export default class EditStandup extends Component {
   render() {
     return (
       <div>
-        <h3>Edit Exercise Log</h3>
-        <form onSubmit={this.onSubmit}>
+        <Navigation />
+        <form className="table" onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username: </label>
             <select
@@ -152,7 +153,7 @@ export default class EditStandup extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Edit Exercise Log"
+              value="Edit Daily Standup"
               className="btn btn-primary"
             />
           </div>

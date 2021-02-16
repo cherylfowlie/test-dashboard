@@ -41,8 +41,7 @@ export default class CreateUser extends Component {
     return (
       <div>
         <Navigation />
-        <h3>Create New User</h3>
-        <form onSubmit={this.onSubmit}>
+        <form className="table" onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username: </label>
             <input
