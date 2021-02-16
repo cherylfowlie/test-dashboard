@@ -25,7 +25,7 @@ export default class CreateStandup extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3000/users/")
+      .get("https://lit-river-04413.herokuapp.com/users/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -66,17 +66,17 @@ export default class CreateStandup extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const exercise = {
+    const standup = {
       username: this.state.username,
       description: this.state.description,
       platform: this.state.platform,
       date: this.state.date,
     };
 
-    console.log(exercise);
+    console.log(standup);
 
     axios
-      .post("http://localhost:3000/standup/add", exercise)
+      .post("https://lit-river-04413.herokuapp.com/standup/add", standup)
       .then((res) => console.log(res.data));
 
     window.location = "/";

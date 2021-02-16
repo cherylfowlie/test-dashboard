@@ -25,7 +25,7 @@ export default class EditStandup extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3000/standup/" + this.props.match.params.id)
+      .get("https://lit-river-04413.herokuapp.com/standup/" + this.props.match.params.id)
       .then((response) => {
         this.setState({
           username: response.data.username,
@@ -39,7 +39,7 @@ export default class EditStandup extends Component {
       });
 
     axios
-      .get("http://localhost:3000/users/")
+      .get("https://lit-river-04413.herokuapp.com/users/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -90,7 +90,7 @@ export default class EditStandup extends Component {
 
     axios
       .post(
-        "http://localhost:3000/standup/update/" + this.props.match.params.id,
+        "https://lit-river-04413.herokuapp.com/update/" + this.props.match.params.id,
         exercise
       )
       .then((res) => console.log(res.data));
