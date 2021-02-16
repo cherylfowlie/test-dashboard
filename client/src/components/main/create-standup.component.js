@@ -84,9 +84,9 @@ export default class CreateStandup extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Navigation />
-        <form onSubmit={this.onSubmit}>
+        <form className="table" onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username: </label>
             <select
@@ -137,7 +137,7 @@ export default class CreateStandup extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create Exercise Log"
+              value="Add Daily Standup"
               className="btn btn-primary"
             />
           </div>
