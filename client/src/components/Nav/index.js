@@ -36,6 +36,7 @@ function Navigation() {
                   <Nav.Link href="/create">Create Stand up</Nav.Link>
                   <Nav.Link href="/user">User</Nav.Link>
                   <Nav.Link href="/release">Releases</Nav.Link>
+                  <Nav.Link href="/tests">Bug Tracker</Nav.Link>
                   <Button variant="link" onClick={handleLogout}>
                     Log Out
                   </Button>
@@ -45,8 +46,7 @@ function Navigation() {
             </Navbar>
             <br />
             <Switch>
-              <Route exact path="/">
-              </Route>
+              <Route exact path="/"></Route>
               <Route path="/standup">
                 <ListStandUp />
               </Route>

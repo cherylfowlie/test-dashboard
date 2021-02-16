@@ -11,7 +11,8 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "prettier": "npx prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -34,9 +35,13 @@
     "jira-client": "^6.21.1",
     "mongoose": "^5.3.16",
     "react": "^16.13.1",
+    "react-axios": "^2.0.4",
     "react-bootstrap": "^1.4.3",
     "react-datepicker": "^3.4.1",
+    "react-dnd": "^10.0.2",
+    "react-dnd-html5-backend": "^10.0.2",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "suitest-js-api": "^2.0.0"

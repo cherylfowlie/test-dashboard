@@ -13,6 +13,7 @@ import ListRelease from "./pages/release";
 import CreateUser from "./main/create-user.component";
 import CreateStandup from "./main/create-standup.component";
 import EditStandup from "./main/edit-standup.component";
+import Homepage from "./pages/tests";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <PrivateRoute exact path="/user" component={CreateUser} />
           <PrivateRoute exact path="/create" component={CreateStandup} />
           <PrivateRoute exact path="/edit/:id" component={EditStandup} />
+          <PrivateRoute exact path="/tests" component={Homepage} />
         </Switch>
       </AuthProvider>
     </Router>
