@@ -37,7 +37,7 @@ export default class StandupList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://lit-river-04413.herokuapp.com/standup/")
+      .get("http://localhost:3000/standup/")
       .then((response) => {
         this.setState({ standup: response.data });
       })
@@ -47,7 +47,7 @@ export default class StandupList extends Component {
   }
 
   deleteStandup(id) {
-    axios.delete("https://lit-river-04413.herokuapp.com/standup/" + id).then((response) => {
+    axios.delete("http://localhost:3000/standup/" + id).then((response) => {
       console.log(response.data);
     });
 
@@ -61,7 +61,7 @@ export default class StandupList extends Component {
       return (
         <Standup
           standup={currentstanduplist}
-          deleteStandup={this.deleteExercise}
+          deleteStandup={this.deleteStandup}
           key={currentstanduplist._id}
         />
       );

@@ -25,7 +25,7 @@ export default class CreateStandup extends Component {
 
   componentDidMount() {
     axios
-      .get("https://lit-river-04413.herokuapp.com/users/")
+      .get("http://localhost:3000/users/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -76,7 +76,7 @@ export default class CreateStandup extends Component {
     console.log(standup);
 
     axios
-      .post("https://lit-river-04413.herokuapp.com/standup/add", standup)
+      .post("http://localhost:3000/standup/add", standup)
       .then((res) => console.log(res.data));
 
     window.location = "/";
